@@ -1,0 +1,4 @@
+/src/main/resources/jdbc.properties
+/src/main/resources/redis.properties
+/.idea
+/target
