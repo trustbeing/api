@@ -12,6 +12,7 @@ import com.aliyuncs.http.FormatType;
 import com.aliyuncs.http.HttpResponse;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import com.waipan.api.util.Config;
 
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
@@ -32,10 +33,7 @@ public class AliyunSms {
 	static final String domain = "dysmsapi.aliyuncs.com";
 
 	// TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
-	static final String accessKeyId = "LTAIzSCPY1YUwjlh";
-	static final String accessKeySecret = "0gndntzgptHKizpZZs3H5PL8wtKo7x";
-	//短信签名
-	static final String signName = "外盘吧";
+
 
 	/**
 	 * @Description: 阿里云短信服务，发送短信
@@ -51,7 +49,7 @@ public class AliyunSms {
 			System.setProperty("sun.net.client.defaultReadTimeout", "10000");
 
 			//初始化acsClient,暂不支持region化
-			IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);
+			IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", Config.AccessKeyId, Config.AccessKeySecret);
 			DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);
 			IAcsClient acsClient = new DefaultAcsClient(profile);
 
@@ -60,7 +58,7 @@ public class AliyunSms {
 			//必填:待发送手机号
 			request.setPhoneNumbers(mobile);
 			//必填:短信签名-可在短信控制台中找到
-			request.setSignName(signName);
+			request.setSignName(Config.SignName);
 			//必填:短信模板-可在短信控制台中找到
 			request.setTemplateCode(template);
 			//可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
@@ -96,7 +94,7 @@ public class AliyunSms {
 		System.setProperty("sun.net.client.defaultReadTimeout", "10000");
 
 		//初始化acsClient,暂不支持region化
-		IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId, accessKeySecret);
+		IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", Config.AccessKeyId, Config.AccessKeySecret);
 		DefaultProfile.addEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);
 		IAcsClient acsClient = new DefaultAcsClient(profile);
 
