@@ -1,7 +1,7 @@
-# api
+﻿# api
 springMvc mybatis redis idea mysql rest风格api
 
-jdbc.properties和 redis.properties 未上传
+jdbc.properties和 redis.properties  config.properties未上传
 
 #redis settings
 redis.minIdle=50
@@ -26,3 +26,12 @@ jdbc.driverClassName=com.mysql.jdbc.Driver
 jdbc.url=jdbc:mysql://*********************/******
 jdbc.username=root
 jdbc.password=*************
+
+
+#config配置
+
+
+#阿里云短信服务配置
+config.aliyun.AccessKeyId=************************
+config.aliyun.AccessKeySecret=************************
+config.aliyun.SignName=***
